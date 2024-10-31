@@ -2,6 +2,7 @@
 
 \documentclass[10pt,reqno,final]{article}
 %\documentclass[10pt,reqno,draft]{article}
+%\documentclass[a4pape,10pt,twoside]{article}
 
 % package for mathematics
 \usepackage{amsmath,amssymb,amsthm}
@@ -203,7 +204,7 @@ Because of online formatting, abstracts must appear as plain as possible.
 Any equations should be inline.
 
 \medskip
-\noindent{\bfseries Keywords}: Academic article, Example, \LaTeX{} template
+\noindent{\bfseries Keywords:} Academic article, Example, \LaTeX{} template
 
 \medskip
 \noindent{\bfseries Mathematics Subject Classification:} 65M60, 65M12.
@@ -290,7 +291,7 @@ This is a lemma environment
 This is a citation example \cite{Adams2003,TreWei2014}.
 This statement requires citations \cite{Shen1994,Tadmor2012,TreWei2014}.
 
-Here we state our main result as \ref{thm:bigthm}.
+Here we state our main result as \autoref{thm:bigthm}.
 
 \begin{theorem}[$LDL^T$ Factorization \cite{GoVa2013}]\label{thm:bigthm}
   If $A \in \mathbb{R}^{n \times n}$ is symmetric and the principal submatrix $A(1:k,1:k)$ is nonsingular for $k=1:n-1$, then there

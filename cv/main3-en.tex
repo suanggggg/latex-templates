@@ -53,7 +53,11 @@
 
 % define color for cv
 \definecolor{deepgreen}{RGB}{0,111,104}
-\definecolor{deepblue}{RGB}{0,111,190}
+\definecolor{darkblue}{RGB}{0,51,102}
+\definecolor{skyblue}{RGB}{0,111,190}
+
+% choose main color
+\colorlet{main}{skyblue}
 
 % command for listsep
 \setlist{nolistsep}
@@ -66,32 +70,27 @@
 \newcommand{\cvsection}[2][]{%
   \bigskip%
   \ifstrequal{#1}{}{}{\marginpar{\vspace*{\dimexpr1pt-\baselineskip}\raggedright\input{#1}}}%
-  {\large\bfseries\color{deepblue}\MakeUppercase{#2}}\\[-1.6ex]%
+  {\large\color{main}\bfseries\MakeUppercase{#2}}\\[-1.6ex]%
   {\rule{\linewidth}{0.5pt}\par}%
   \smallskip
 }
-\newcommand{\cvevent}[4][]{%
-  {#1 #2}%
-  \hangpara{1em}{1}{\ifstrequal{#3}{}{}{#3}}%
-  {\hfill\ifstrequal{#4}{}{}{#4}}\par
-  %\smallskip
-}
-\newcommand{\cvstate}[2]{%
+\newcommand{\cvevent}[2][]{%
   {#1}%
-  {\ifstrequal{#2}{}{}{#2}}\par%
-  %\smallskip
+  \hangpara{1em}{1}{\ifstrequal{#2}{}{}{#2}}%
+  \par
+  \smallskip
 }
 \makeatother
 
-\newcommand{\cvbullet}{\thinspace\raisebox{1.5pt}{\footnotesize\color{deepblue}$\bullet$}}%
-\newcommand{\cvast}{\thinspace\raisebox{1.0pt}{\color{deepblue}\scalebox{1.1}{\boldmath$\ast$}}}%
-\newcommand{\cvstar}{\thinspace\raisebox{2.2pt}{\color{deepblue}\scalebox{0.6}{$\bigstar$}}}%
+\newcommand{\cvbullet}{\makebox[1em][l]{\thinspace\raisebox{1.5pt}{\footnotesize$\bullet$}}}%
+\newcommand{\cvast}{\makebox[1em][l]{\thinspace\raisebox{1.0pt}{\scalebox{1.1}{\boldmath$\ast$}}}}%
+\newcommand{\cvstar}{\makebox[1em][l]{\thinspace\raisebox{2.2pt}{\scalebox{0.6}{$\bigstar$}}}}%
 
 % new list for cv
 %\newlist{cvlist}{itemize}{2}
 %\setlist[cvlist,1]{leftmargin=2em,label={--}}
 
-\newcommand{\green}[1]{{\color{deepgreen}#1}}
+%\newcommand{\green}[1]{{\color{deepgreen}#1}}
 
 %-------------------------------------------%
 
@@ -101,23 +100,19 @@
 
 %------------------HEADING------------------%
 
-% Left side of heading
 \begin{center}%
 % TYPE 1
 {\LARGE\bfseries\MakeUppercase{Your Name}}\par%
 \bigskip
 Your occupation or position $\diamond$ Your company or university \\
 Your address $\diamond$ Your other information \\
-{\color{blue}\texttt{https://univ.edu.com/name}} $\diamond$ (021)-1234-5678 \\
-\smallskip
-% TYPE 2
-%{\green{\footnotesize\faEnvelope} \texttt{xxx@univ.edu.com} \quad \green{\small\faPhone} 123456789 \par}%
-%{\green{\small\faMapMarker} xxx Street, City \quad \green{\small\faChain} \texttt{https://univ.edu.com/name} \par}%
-%{\green{\small\faGithub} \texttt{https://github.com/name} }%
-% TYPE 3
-%{Email: \texttt{xxx@univ.edu.com} \quad Phone: 123456789 \par}%
-%{Address: xxx Street, City \quad Homepage: \texttt{https://univ.edu.com/name} \par}%
-%{Other: Bala Bala\par}
+{\color{darkblue}\texttt{https://univ.edu.com/name}} $\diamond$ (021)-1234-5678 \\
+% TYPE 2 need fontawesome
+%\begin{tabular}{l}
+%{\color{main}\footnotesize\faEnvelope} \texttt{xxx@univ.edu.com} \quad {\color{main}\small\faPhone} 12304560789 \\
+%{\color{main}\small\faMapMarker} xxx Street, City\quad~~~~\; {\color{main}\small\faChain} \texttt{https://univ.edu.com/name} \\
+%{\color{main}\small\faGithub} \texttt{https://github.com/name} %
+%\end{tabular}
 \end{center}
 \medskip
 
@@ -129,38 +124,17 @@ Your address $\diamond$ Your other information \\
 %-------------------------------------------%
 \cvsection{Education}
 
-\cvevent[\cvbullet]{Your University 1}%
-{\hfill  Plance 1 \\ Description }%
-{20xx.xx--20xx.xx}
-
-\begin{itemize}[leftmargin=2em,label={--}]
-  \item item one
-  \item item two
-\end{itemize}
-\smallskip
-
-\cvevent[\cvbullet]{Your University 2, }%
-{Plance or other information}%
-{20xx.xx--20xx.xx}
-
-\begin{enumerate}[leftmargin=2.3em,label={\arabic*.}]
-  \item item one
-  \item item two
-\end{enumerate}
+\cvevent[\cvbullet]{20xx.xx -- 20xx.xx, \textbf{University 1}, Description \hfill Bachelor}%
+\cvevent[\cvbullet]{\textbf{University 2}, Master, Description \hfill 20xx.xx--20xx.xx}
 
 
 %-------------------------------------------%
 \cvsection{Experience}
 
-\cvevent[\cvstar]{Company 1}%
-{\hfill 20xx.xx--20xx.xx \\ \textit{Your job title} }%
-{Place}
-\medskip
+\cvevent[\cvstar]{\textbf{Company 1} \hfill 20xx.xx--20xx.xx \\
+\textit{Your job title} \hfill Place}
 
-\cvevent[\cvast]{Company 2, }%
-{Your job title or other information}%
-{20xx.xx--20xx.xx}%
-
+\cvevent[\cvast]{\textbf{Company 2}, Your job title or other information \hfill 20xx.xx--20xx.xx}%
 \cvindent{Description of this job}
 
 \begin{itemize}[leftmargin=2em,label={--}]
@@ -170,40 +144,35 @@ Your address $\diamond$ Your other information \\
 
 
 %-------------------------------------------%
-\cvsection{Personal Projects}
+\cvsection{Projects}
 
-\cvevent[\cvbullet]{Project Name}%
-{}%
-{20xx.xx--20xx.xx}
-
+\cvevent[\cvbullet]{\textbf{Project Name} \hfill 20xx.xx--20xx.xx}
 \cvindent{\itshape Project description}
 
-\begin{itemize}[leftmargin=2em,label={--}]
+\begin{enumerate}[leftmargin=2.3em,label={\arabic*.}]
   \item item one
   \item item two
-\end{itemize}
+\end{enumerate}
 
 
 %-------------------------------------------%
 \cvsection{Skills and Interests}
-\cvstate{Language: }{English, Chinese}%
-\cvstate{Interest: }{Basketball, Reading, Traveling}%
+
+\cvevent[\cvast]{Strong knowledge of relevant concepts, e.g., data analysis;}
+\cvevent[\cvast]{Proficient in specific skills, e.g., Python, MATLAB;}
+\cvevent[\cvast]{Interested in topics, e.g., artificial intelligence.}
 
 
 %-------------------------------------------%
 \cvsection{Achievements}
-\cvevent[\cvstar]{Achievement 1, }%
-{Description}%
-{\itshape Event dates}
-\smallskip
 
-\cvevent[\cvstar]{Achievement 2, }%
-{Description}%
-{\itshape Event dates}
+\cvevent[\cvstar]{Achievement 1, Description \hfill \textit{Event dates}}
+\cvevent[\cvstar]{Achievement 2, Description \hfill \textit{Event dates}}
 
 
 %-------------------------------------------%
 \cvsection{Papers}
+
 \begin{enumerate}[leftmargin=*,label={[\arabic*]}]
   \item paper one
   \item paper two

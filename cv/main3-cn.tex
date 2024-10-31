@@ -57,7 +57,11 @@
 
 % define color for cv
 \definecolor{deepgreen}{RGB}{0,111,104}
-\definecolor{deepblue}{RGB}{0,111,190}
+\definecolor{darkblue}{RGB}{0,51,102}
+\definecolor{skyblue}{RGB}{0,111,190}
+
+% define main color
+\colorlet{main}{skyblue}
 
 % command for listsep
 \setlist{nolistsep}
@@ -70,32 +74,28 @@
 \newcommand{\cvsection}[2][]{%
   \bigskip%
   \ifstrequal{#1}{}{}{\marginpar{\vspace*{\dimexpr1pt-\baselineskip}\raggedright\input{#1}}}%
-  {\large\bfseries\color{deepblue} #2}\\[-1.6ex]%
+  {\Large\color{main}\bfseries #2}\\[-1.6ex]%
   {\rule{\linewidth}{0.5pt}\par}%
   \smallskip
 }
-\newcommand{\cvevent}[4][]{%
-  {#1 #2}%
-  \hangpara{1em}{1}{\ifstrequal{#3}{}{}{#3}}%
-  {\hfill\ifstrequal{#4}{}{}{#4}}\par
-  %\smallskip
-}
-\newcommand{\cvstate}[2]{%
+\newcommand{\cvevent}[2][]{%
   {#1}%
-  {\ifstrequal{#2}{}{}{#2}}\par%
-  %\smallskip
+  \hangpara{1em}{1}{\ifstrequal{#2}{}{}{#2}}%
+  \par
+  \smallskip
 }
 \makeatother
 
-\newcommand{\cvbullet}{\thinspace\raisebox{1.5pt}{\footnotesize\color{deepblue}$\bullet$}}%
-\newcommand{\cvast}{\thinspace\raisebox{1.0pt}{\color{deepblue}\scalebox{1.1}{\boldmath$\ast$}}}%
-\newcommand{\cvstar}{\thinspace\raisebox{2.2pt}{\color{deepblue}\scalebox{0.6}{$\bigstar$}}}%
+\newcommand{\cvbullet}{\makebox[1em][l]{\thinspace\raisebox{1.5pt}{\footnotesize$\bullet$}}}%
+\newcommand{\cvast}{\makebox[1em][l]{\thinspace\raisebox{1.0pt}{\scalebox{1.1}{\boldmath$\ast$}}}}%
+\newcommand{\cvstar}{\makebox[1em][l]{\thinspace\raisebox{2.2pt}{\scalebox{0.6}{$\bigstar$}}}}%
 
 % new list for cv
 %\newlist{cvlist}{itemize}{2}
 %\setlist[cvlist,1]{leftmargin=2em,label={--}}
 
-\newcommand{\green}[1]{{\color{deepgreen}#1}}
+%\newcommand{\green}[1]{{\color{deepgreen}#1}}
+%\newcommand{\blue}[1]{{\color{darkblue}#1}}
 
 %-------------------------------------------%
 
@@ -111,16 +111,13 @@
 \bigskip
 你的职业或职位 $\diamond$ 你所在的公司或大学 \\
 你的地址 $\diamond$ 你的其他信息 \\
-{\color{blue}\texttt{https://univ.edu.com/name}} $\diamond$ (021)-1234-5678 \\
-\smallskip
-% TYPE 2
-%{\green{\footnotesize\faEnvelope} \texttt{xxx@univ.edu.com} \quad \green{\small\faPhone} 123456789 \par}%
-%{\green{\small\faMapMarker} 你的地址 \quad \green{\small\faChain} \texttt{https://univ.edu.com/name} \par}%
-%{\green{\small\faGithub} \texttt{https://github.com/name} }%
-% TYPE 3
-%{邮箱: \texttt{xxx@univ.edu.com} \quad 手机: 123456789 \par}%
-%{地址: 你的地址  \quad 主页: \texttt{https://univ.edu.com/name} \par}%
-%{其他: Bala Bala\par}%
+{\color{darkblue}\texttt{https://univ.edu.com/name}} $\diamond$ (021)-1234-5678 \\
+% TYPE 2 need fontawesome
+%\begin{tabular}{l}
+%{\color{main}\footnotesize\faEnvelope} \texttt{xxx@univ.edu.com} \quad {\color{main}\small\faPhone} 12304560789 \\
+%{\color{main}\small\faMapMarker} 你的地址 \qquad\qquad\quad~\, {\color{main}\small\faChain} \texttt{https://univ.edu.com/name} \\
+%{\color{main}\small\faGithub} \texttt{https://github.com/name} %
+%\end{tabular}
 \end{center}
 \medskip
 
@@ -130,41 +127,22 @@
 \cvsection{研究领域}
 \cvindent{机器学习和计算机视觉 (CV)}
 
+
 %-------------------------------------------%
 \cvsection{教育经历}
 
-\cvevent[\cvbullet]{大学一}%
-{\hfill  地址 \\ 描述信息 }%
-{\kaishu 20xx年xx月--20xx年xx月}
-
-\begin{itemize}[leftmargin=2em,label={--}]
-  \item 第一项
-  \item 第二项
-\end{itemize}
-\smallskip
-
-\cvevent[\cvbullet]{大学二}%
-{, 地址或其他信息}%
-{\kaishu 20xx年xx月--20xx年xx月}
-
-\begin{enumerate}[leftmargin=2.3em,label={\arabic*.}]
-  \item 第一项
-  \item 第二项
-\end{enumerate}
+\cvevent[\cvbullet]{20xx.xx -- 20xx.xx  \qquad\qquad \textbf{大学一} \qquad\qquad 专业 \hfill  本科}
+\cvevent[\cvbullet]{20xx.xx -- 20xx.xx  \qquad\qquad \textbf{大学二} \qquad\qquad 专业 \hfill  硕士}
+\cvevent[\cvbullet]{20xx.xx -- 20xx.xx  \qquad\qquad \textbf{大学三} \qquad\qquad 专业 \hfill  博士}
 
 
 %-------------------------------------------%
 \cvsection{工作经历}
 
-\cvevent[\cvstar]{公司一}%
-{\hfill\kaishu 20xx年xx月--20xx年xx月 \\ 你的职位 }%
-{地址}
-\smallskip
+\cvevent[\cvbullet]{\textbf{公司一} \hfill {\kaishu 20xx年xx月--20xx年xx月} \\
+你的职位 \hfill 地址}
 
-\cvevent[\cvast]{公司二}%
-{, 你的职位或其他信息}%
-{\kaishu 20xx年xx月--20xx年xx月}
-
+\cvevent[\cvbullet]{\textbf{公司二}, 你的职位或其他信息 \hfill {\kaishu 20xx年xx月--20xx年xx月}}
 \cvindent{\kaishu 这个工作的描述}
 
 \begin{itemize}[leftmargin=2em,label={--}]
@@ -174,44 +152,40 @@
 
 
 %-------------------------------------------%
-\cvsection{个人项目}
+\cvsection{项目经历}
 
-\cvevent[\cvbullet]{项目名称}%
-{}%
-{\kaishu 20xx年xx月--20xx年xx月}%
-
+\cvevent[\cvbullet]{\textbf{项目名称} \hfill {\kaishu 20xx年xx月--20xx年xx月}}%
 \cvindent{项目描述}
 
-\begin{itemize}[leftmargin=2em,label={--}]
+\begin{enumerate}[leftmargin=2.3em,label={\arabic*.}]
   \item 第一项
   \item 第二项
-\end{itemize}
+\end{enumerate}
 
 
 %-------------------------------------------%
-\cvsection{技能和兴趣}
-\cvstate{语言:~}{英语, 法语}%
-\cvstate{兴趣:~}{篮球, 看书, 旅行}%
+\cvsection{技能与兴趣}
+
+\cvevent[\cvast]{掌握 xx 专业知识, 具有 xxx 的能力}
+\cvevent[\cvast]{精通 xx 语言, 具有 xxx 的能力}
+\cvevent[\cvast]{对 xx 感兴趣}
 
 
 %-------------------------------------------%
-\cvsection{荣誉}
-\cvevent[\cvstar]{荣誉 1, }%
-{描述}%
-{\kaishu 时间}
-\smallskip
+\cvsection{奖项与荣誉}
 
-\cvevent[\cvstar]{荣誉 2, }%
-{描述}%
-{\kaishu 时间}
-\smallskip
+\cvevent[\cvstar]{20xx年获得 xx 奖项}
+\cvevent[\cvstar]{20xx年获得 xx 荣誉}
+\cvevent[\cvstar]{荣誉 2, 描述 \hfill {\kaishu 20xx年}}
 
 %-------------------------------------------%
-\cvsection{论文}
+\cvsection{科研论文}
+
 \begin{enumerate}[leftmargin=*,label={[\arabic*]}]
   \item 论文一
   \item 论文二
 \end{enumerate}
+
 
 
 \end{document}
